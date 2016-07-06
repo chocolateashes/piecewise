@@ -1,0 +1,17 @@
+---
+- name: Copy geo data to server
+  copy: src=usa_example/{{ item.src }} dest=/opt/piecewise_web/{{ item.dest }}
+  with_items:
+      - { src: usa.json, dest: usa.json }
+      - { src: cb_2015_us_state_5m, dest: '' }
+      - { src: center.js, dest: js/center.js }
+- name: Copy extra_data.py to server
+  copy: src=usa_example/extra_data.py dest=/opt/piecewise/
+- pip: name=ipaddress state=latest
+- name: Ingest census blocks to postgres
+  command: ogr2ogr -f PostgreSQL -t_srs EPSG:4326 -nln cb_2015_us_state_5m -nlt MultiPolygon 'PG:user=postgres dbname=piecewise' /opt/piecewise_web/cb_2015_us_state_5m/cb_2015_us_state_5m.shp
+- name: Install piecewise configuration
+  copy: src=usa_example/piecewise_config.json dest=/etc/piecewise/config.json
+- name: Restart uwsgi so piecewise config is detected
+  service: name=uwsgi state=restarted
+- command: python extra_data.py chdir=/opt/piecewise
