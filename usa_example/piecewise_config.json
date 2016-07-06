@@ -7,7 +7,7 @@
         "statistics_table_name": "state_statistics",
         "bins": [
             { "type" : "spatial_join", "table" : "states", "geometry_column" : "wkb_geometry", "key" : "geoid", "join_custom_data" : true },
-            { "type" : "time_slices", "resolution" : "day" },
+            { "type" : "time_slices", "resolution" : "month" },
             { "type" : "isp_bins", "maxmind_table" : "maxmind", 
                 "rewrites" : {
 		    "aerioconnect": ["aerioconnect"],
