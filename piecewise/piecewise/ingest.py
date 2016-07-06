@@ -39,7 +39,7 @@ def ingest(config):
     print ''
     print 'Took %d s to complete'.format(finish_time - start_time)
 
-    query_response = bigquery_service.jobs().getQueryResults(projectId = piecewise.bigquery.PROJECT_NUMBER, jobId = jobId, maxResults = 10000).execute()
+    query_response = bigquery_service.jobs().getQueryResults(projectId = piecewise.bigquery.PROJECT_NUMBER, jobId = jobId, maxResults = 1000000).execute()
     inserter = records.insert()
     page_count = 0
     record_count = 0
