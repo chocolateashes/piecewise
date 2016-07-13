@@ -1,8 +1,8 @@
 ---
 - name: Copy geo data to server
-  copy: src=usa_example/{{ item.src }} dest=/opt/piecewise_web/{{ item.dest }}
+  copy: src=dc_example/{{ item.src }} dest=/opt/piecewise_web/{{ item.dest }}
   with_items:
-      - { src: dc_ward.json, dest: dc_ward.json }
+      - { src: dc_ward.topojson, dest: dc_ward.topojson }
       - { src: Ward__2012, dest: '' }
       - { src: center.js, dest: js/center.js }
 - name: Copy extra_data.py to server
