@@ -271,7 +271,7 @@
 // the MMMM_YY- suffix to look for. For example:
 // If set to 'city_council_districts', then the system will look for
 // GeoJSON files like 'MMMM_YY-city_council_districts.geojson'.
-var polygonType = 'census_block_groups';
+var polygonType = 'polygon_layer';
 
 // Either 'topojson' or 'geojson'.  The Node.js script creates both TopoJSON and
 // GeoJSON files.  TopoJSON files are significantly smaller in size, but need to
@@ -306,19 +306,19 @@ var overlays = {
 
 // Defines the layers that are going to be added to the map.
 var geoLayers = {
-	'census_block_groups': {
-		'name': 'Census block groups',
-		'polygonFile': 'ne_110m_admin_1_states_provinces_shp_scale_rank.json',
-		'dataUrl': 'stats/q/by_state?format=json&stats=AverageRTT,DownloadCount,MedianDownload,AverageDownload,UploadCount,MedianUpload,AverageUpload,DownloadMax,UploadMax&b.spatial_join=key&b.time_slices=month&f.time_slices=',
-		'dbKey': 'geoid10',
-		'geoKey': 'GEOID10',
+	'polygon_layer': {
+		'name': 'DC Wards',
+		'polygonFile': 'dc_ward.topojson',
+		'dataUrl': 'stats/q/by_ward?format=json&stats=AverageRTT,DownloadCount,MedianDownload,AverageDownload,UploadCount,MedianUpload,AverageUpload,DownloadMax,UploadMax&b.spatial_join=key&b.time_slices=month&f.time_slices=',
+		'dbKey': 'WARD',
+		'geoKey': 'WARD',
 		'cache': null,
 		'layer': null
 	},
 };
 
 // Which of the geoLayers should be the one added to the map by default
-var defaultLayer = 'census_block_groups';
+var defaultLayer = 'polygon_layer';
 
 // If set to true, then prefetch the GeoJSON files into a local cache.  WARNING:
 // You may not want to enable if you expect mobile, low bandwidth, or otherwise
@@ -331,9 +331,9 @@ var animateInterval = 1500;
 // Center and zoom level of map.  center may be pulled in via js/center.js, but
 // if not then just set it to the center of the USA.
 if ( typeof center == 'undefined' ) {
-	var center = [36.2038459,-113.765769]; //USA
+	var center = [38.89499,-77.0246607]; //DC
 }
-var zoom = 3;
+var zoom = 11;
 
 // These are the labels that will be used for the month slider in the control
 // box in the lower left corner.
