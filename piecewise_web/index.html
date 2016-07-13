@@ -212,7 +212,7 @@
 		document.getElementById('longitude').value = position.coords.longitude;
 
 		var xhr = new XMLHttpRequest(),
-		currentLocationURL = "http://nominatim.openstreetmap.org/reverse?format=json&lat=" + position.coords.latitude + "&lon=" + position.coords.longitude + "&zoom=18&addressdetails=1";
+		currentLocationURL = "http://nominatim.openstreetmap.org/reverse?format=json&lat=" + position.coords.latitude + "&lon=" + position.coords.longitude + "&zoom=4&addressdetails=1";
 
 		var currentLoc;
 		xhr.open('GET', currentLocationURL, true);
@@ -308,8 +308,8 @@ var overlays = {
 var geoLayers = {
 	'census_block_groups': {
 		'name': 'Census block groups',
-		'polygonFile': 'seattle_census10_blockgroups.topojson',
-		'dataUrl': 'stats/q/by_census_block?format=json&stats=AverageRTT,DownloadCount,MedianDownload,AverageDownload,UploadCount,MedianUpload,AverageUpload,DownloadMax,UploadMax&b.spatial_join=key&b.time_slices=month&f.time_slices=',
+		'polygonFile': 'ne_110m_admin_1_states_provinces_shp_scale_rank.json',
+		'dataUrl': 'stats/q/by_state?format=json&stats=AverageRTT,DownloadCount,MedianDownload,AverageDownload,UploadCount,MedianUpload,AverageUpload,DownloadMax,UploadMax&b.spatial_join=key&b.time_slices=month&f.time_slices=',
 		'dbKey': 'geoid10',
 		'geoKey': 'GEOID10',
 		'cache': null,
@@ -331,9 +331,9 @@ var animateInterval = 1500;
 // Center and zoom level of map.  center may be pulled in via js/center.js, but
 // if not then just set it to the center of the USA.
 if ( typeof center == 'undefined' ) {
-	var center = [38.8961302513129,-99.04025268554688]; //USA
+	var center = [36.2038459,-113.765769]; //USA
 }
-var zoom = 11;
+var zoom = 3;
 
 // These are the labels that will be used for the month slider in the control
 // box in the lower left corner.
