@@ -89,7 +89,6 @@ cd baltimore_example
 rm seattle_council_districts.geojson
 rm seattle_census10_blockgroups.topojson
 rm -rf seattle_blkgrpce10
-rm seattle_bigquery_results.sql.gz
 cd ../
 ```
 
