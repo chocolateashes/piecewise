@@ -537,6 +537,18 @@ var baseLayers = {
 };
 ```
 
+#### Update piecewise/piecewise/bigquery.py with your Google Developer Console project's ID
+
+Open ```piecewise/piecewise/bigquery.py``` in a text editor and update the value in the line below with the project ID from the Google Developer Console project you created earlier.
+
+For example change:
+
+```PROJECT_NUMBER = '233384409938'```
+
+to:
+
+```PROJECT_NUMBER = 'YOUR-PROJECT-ID'
+
 ## Commit your changes and update your fork and branch
 
 The last thing you need to do before moving on to deploying Piecewise is commit and push all your changes to your fork. As you can see in the last step in the previous section, **Ansible downloads the repository and branch you specify during the deployment process.**
