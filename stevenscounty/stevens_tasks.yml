@@ -68,7 +68,7 @@
 #        /opt/piecewise_web/maryland_blkgrps/cb_2015_24_bg_500k.shp
 #
 - name: Ingest census blocks to postgres
-  command: ogr2ogr -f PostgreSQL -t_srs EPSG:4326 -nln stevens_blkgrps -nlt MultiPolygon 'PG:user=postgres dbname=piecewise' /opt/piecewise_web/stevens_blkgrps/BlkGrpPop.shp
+  command: ogr2ogr -skipfailure -f PostgreSQL -t_srs EPSG:4326 -nln stevens_blkgrps -nlt MultiPolygon 'PG:user=postgres dbname=piecewise' /opt/piecewise_web/stevens_blkgrps/BlkGrpPop.shp
 
 # ------------------------------------------------------------------
 #
