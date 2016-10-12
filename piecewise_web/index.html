@@ -4,7 +4,7 @@
 
 <head>
 	<meta charset='utf-8' />
-	<title>Your Map's Name</title>
+	<title>Stephens County, WA Broadband Map</title>
 	<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
 	<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.6/mapbox.css' rel='stylesheet' />
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -34,7 +34,7 @@
 <div id="welcome-container">
 	<div id="header">
 		<div id="intro">
-			<h3>The City of Seattle is collecting information from residents about broadband experiences across the City. To contribute, please answer the following questions and then take our Broadband Speed Test:</h3>
+			<h3>Stephens County is collecting information from residents about broadband experiences across the City. To contribute, please answer the following questions and then take our Broadband Speed Test:</h3>
 		</div>
 	</div>
 	<div id="sidebar">
@@ -79,13 +79,14 @@
 						</p>
 				</div>
 				<div class="container textboxes">
-						<p>What are your advertised upload and download speeds? <strong>(Optional)</strong></p>
+						<p>What are your advertised download and upload speeds? <strong>(Optional)</strong></p>
+						<div class="expected-values">
+						<p>Download:</p>
+						<input name="advertised_download" size="3"/><small> mbps</small>
+						</div>
 						<div class='expected-values'>
 						<p>Upload:</p>
 						<input name="advertised_upload" size="3"/><small> mbps</small>
-					</div><div class="expected-values">
-						<p>Download:</p>
-						<input name="advertised_download" size="3"/><small> mbps</small>
 						</div>
 				</div>
 				<div class="container" id="consent-text">
@@ -313,7 +314,7 @@ var overlays = {
 var geoLayers = {
 	'census_block_groups': {
 		'name': 'Census block groups',
-		'polygonFile': 'seattle_census10_blockgroups.topojson',
+		'polygonFile': 'BlockGrpPop_FeaturesToJSONjson',
 		'dataUrl': 'stats/q/by_census_block?format=json&stats=AverageRTT,DownloadCount,MedianDownload,AverageDownload,UploadCount,MedianUpload,AverageUpload,DownloadMax,UploadMax&b.spatial_join=key&b.time_slices=month&f.time_slices=',
 		'dbKey': 'geoid10',
 		'geoKey': 'GEOID10',
@@ -408,10 +409,10 @@ var control = L.control.zoom({position: 'topright'});
 map.addControl(control);
 
 // Use Open Street Maps as a base tile layer
-// var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-//	attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>' +
-//		'contributors'
-// });
+var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+	attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>' +
+		'contributors'
+});
 
 // Use Mapbox as a base tile layer
 // var mapboxLayer = L.tileLayer(
@@ -420,19 +421,19 @@ map.addControl(control);
 // });
  
 // Use Mapbox as a base tile layer
-var mapboxLayer = L.tileLayer(
-		'https://{s}.tiles.mapbox.com/v3/newamerica.lcl1jan5/{z}/{x}/{y}.png', {
-	attribution: '&copy; <a href="http://mapbox.com/">Mapbox</a>'
-});
+// var mapboxLayer = L.tileLayer(
+//		'https://{s}.tiles.mapbox.com/v3/newamerica.lcl1jan5/{z}/{x}/{y}.png', {
+//	attribution: '&copy; <a href="http://mapbox.com/">Mapbox</a>'
+// });
 
 // Set the default base tile layer. 
 // If using Open Street Maps: map.addLayer(osmLayer);
 // If using Mapbox: map.addLayer(mapboxLayer);
-map.addLayer(mapboxLayer);
+map.addLayer(osmLayer);
 
 // Add other base tile layer providers as needed
 var baseLayers = {
-	 'Mapbox': mapboxLayer
+	 'OSM': osmLayer
 };
 
 var layerCtrl = L.control.layers(baseLayers, null, { collapsed: false, position: 'bottomleft' });
