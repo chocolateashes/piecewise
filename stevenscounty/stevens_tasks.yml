@@ -69,7 +69,7 @@
 #
 - name: Ingest census blocks to postgres
 #  command: ogr2ogr -f PostgreSQL -t_srs EPSG:4326 -nln stevens_blkgrps -nlt MultiPolygon 'PG:user=postgres dbname=piecewise' /opt/piecewise_web/stevens_blkgrps/BlkGrpPop.shp
-  command: shp2pgsql -I -s 26911 /opt/piecewise_web/stevens_blkgrps/BlkGrpPop.shp stevens_blkgrps | psql -U postgres -d piecewise
+  command: /usr/bin/shp2pgsql -I -s 26911 /opt/piecewise_web/stevens_blkgrps/BlkGrpPop.shp stevens_blkgrps | psql -U postgres -d piecewise
 
 # ------------------------------------------------------------------
 #
