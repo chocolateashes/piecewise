@@ -286,7 +286,7 @@ var polygonType = 'census_block_groups';
 // client-side to convert the TopJSON to GeoJSON.  I would conjecture that
 // the network is the most limiting factor and that generally TopoJSON will be
 // the right choice.  TODO: prove this theory.
-var jsonType = "geojson";
+var jsonType = "topojson";
 
 
 // The minimum number of data points in any given polygon for a it to be
@@ -314,7 +314,7 @@ var overlays = {
 var geoLayers = {
 	'census_block_groups': {
 		'name': 'Census block groups',
-		'polygonFile': 'BlkGrpPop.geojson',
+		'polygonFile': 'BlkGrpPop.topojson',
 		'dataUrl': 'stats/q/by_census_block?format=json&stats=AverageRTT,DownloadCount,MedianDownload,AverageDownload,UploadCount,MedianUpload,AverageUpload,DownloadMax,UploadMax&b.spatial_join=key&b.time_slices=month&f.time_slices=',
 		'dbKey': 'geoid10',
 		'geoKey': 'GEOID10',

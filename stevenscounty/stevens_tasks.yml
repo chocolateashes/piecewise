@@ -35,7 +35,7 @@
 - name: Copy geo data to server
   copy: src=stevenscounty/{{ item.src }} dest=/opt/piecewise_web/{{ item.dest }}
   with_items:
-    - { src: BlkGrpPop.geojson, dest: BlkGrpPop.geojson }
+    - { src: BlkGrpPop.topojson, dest: BlkGrpPop.topojson }
     - { src: stevens_blkgrps, dest: '' }
     - { src: center.js, dest: js/center.js }
 
