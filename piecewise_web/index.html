@@ -292,7 +292,7 @@ var jsonType = "topojson";
 // The minimum number of data points in any given polygon for a it to be
 // considered statistically relevant.  These cells will either not be displayed
 // or will be displayed with a different styling.
-var minDataPoints = 5;
+var minDataPoints = 1;
 
 // Defines how each overlay is treated on load.  If an overlay is enabled, then
 // there will be a checkbox for it in the layers control. 'defaultOn' determines
@@ -314,7 +314,7 @@ var overlays = {
 var geoLayers = {
 	'census_block_groups': {
 		'name': 'Census block groups',
-		'polygonFile': 'BlockGrpPop_FeaturesToJSON.json',
+		'polygonFile': 'BlockGrpPop.json',
 		'dataUrl': 'stats/q/by_census_block?format=json&stats=AverageRTT,DownloadCount,MedianDownload,AverageDownload,UploadCount,MedianUpload,AverageUpload,DownloadMax,UploadMax&b.spatial_join=key&b.time_slices=month&f.time_slices=',
 		'dbKey': 'geoid10',
 		'geoKey': 'GEOID10',
@@ -339,7 +339,7 @@ var animateInterval = 1500;
 if ( typeof center == 'undefined' ) {
 	var center = [38.8961302513129,-99.04025268554688]; //USA
 }
-var zoom = 11;
+var zoom = 9;
 
 // These are the labels that will be used for the month slider in the control
 // box in the lower left corner.
