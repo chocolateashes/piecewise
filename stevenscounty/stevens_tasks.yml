@@ -35,8 +35,7 @@
 - name: Copy geo data to server
   copy: src=stevenscounty/{{ item.src }} dest=/opt/piecewise_web/{{ item.dest }}
   with_items:
-#    - { src: BlockGrpPop_FeaturesToJSON.json, dest: BlockGrpPop_FeaturesToJSON.json }
-    - { src: BlkGrpPop.geojson, dest: BlkGrpPop.geojson }
+    - { src: BlockGrpPop_FeaturesToJSON.json, dest: BlockGrpPop_FeaturesToJSON.json }
     - { src: stevens_blkgrps, dest: '' }
     - { src: center.js, dest: js/center.js }
 
@@ -69,8 +68,7 @@
 #        /opt/piecewise_web/maryland_blkgrps/cb_2015_24_bg_500k.shp
 #
 - name: Ingest census blocks to postgres
-  command: ogr2ogr -f PostgreSQL 'PG:user=postgres dbname=piecewise' /opt/piecewise_web/stevens_blkgrps/BlkGrpPop.geojson -nln stevens_blkgrps
-#  command: ogr2ogr -f PostgreSQL -t_srs EPSG:4326 -nln stevens_blkgrps -nlt MultiPolygon 'PG:user=postgres dbname=piecewise' /opt/piecewise_web/stevens_blkgrps/BlkGrpPop_updated.shp
+  command: ogr2ogr -f PostgreSQL -t_srs EPSG:4326 -nln stevens_blkgrps -nlt MultiPolygon 'PG:user=postgres dbname=piecewise' /opt/piecewise_web/stevens_blkgrps/BlkGrpPop.shp
 #  command: sudo /usr/bin/shp2pgsql -I -s 26911 /opt/piecewise_web/stevens_blkgrps/BlkGrpPop.shp stevens_blkgrps | psql -U postgres -d piecewise
 
 # ------------------------------------------------------------------
