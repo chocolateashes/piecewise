@@ -36,7 +36,7 @@
   copy: src=stevenscounty/{{ item.src }} dest=/opt/piecewise_web/{{ item.dest }}
   with_items:
     - { src: BlockGrpPop_FeaturesToJSON.json, dest: BlockGrpPop_FeaturesToJSON.json }
-    - { src: BlkGrpPop_geojson.json, dest: BlkGrpPop_geojson.json }
+    - { src: BlkGrpPop.geojson, dest: BlkGrpPop.geojson }
     - { src: stevens_blkgrps, dest: '' }
     - { src: center.js, dest: js/center.js }
 
