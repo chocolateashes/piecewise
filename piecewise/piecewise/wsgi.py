@@ -19,6 +19,10 @@ import pprint
 import piecewise.config
 config = piecewise.config.read_system_config()
 
+@app.route('/hello', methods=['GET', 'POST'])
+def hello():
+    return hello_world()
+
 @app.route("/q/<aggregation>")
 def query_statistics(aggregation):
     filters = dict()
