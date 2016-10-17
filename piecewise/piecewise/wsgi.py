@@ -37,7 +37,7 @@ def query_statistics(aggregation):
         return (results, None, { 'Content-type' : 'text/csv' })
     else:
         results = _rows_to_geojson(results)
-        return (pprint.pprint(results), None, { 'Content-type' : 'application/json' })
+        return (pprint.pprint(results),  None, { 'Content-type' : 'application/json' })
 
 def _rows_to_csv(rows):
     stringio = StringIO.StringIO()
