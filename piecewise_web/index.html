@@ -408,17 +408,11 @@ map.scrollWheelZoom.disable();
 var control = L.control.zoom({position: 'topright'});
 map.addControl(control);
 
-// Use Open Street Maps as a base tile layer
-var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-	attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>' +
-		'contributors'
-});
-
 // Use Mapbox as a base tile layer
-// var mapboxLayer = L.tileLayer(
-//		'https://{s}.tiles.mapbox.com/v3/newamerica.lcl1jan5/{z}/{x}/{y}.png', {
-//	attribution: '&copy; <a href="http://mapbox.com/">Mapbox</a>'
-// });
+var mapboxLayer = L.tileLayer(
+	'https://{s}.tiles.mapbox.com/v3/newamerica.lcl1jan5/{z}/{x}/{y}.png', {
+	attribution: '&copy; <a href="http://mapbox.com/">Mapbox</a>'
+});
  
 // Use Mapbox as a base tile layer
 // var mapboxLayer = L.tileLayer(
@@ -429,11 +423,11 @@ var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 // Set the default base tile layer. 
 // If using Open Street Maps: map.addLayer(osmLayer);
 // If using Mapbox: map.addLayer(mapboxLayer);
-map.addLayer(osmLayer);
+map.addLayer(mapboxLayer);
 
 // Add other base tile layer providers as needed
 var baseLayers = {
-	 'OSM': osmLayer
+	 'mapbox': mapboxLayer
 };
 
 var layerCtrl = L.control.layers(baseLayers, null, { collapsed: false, position: 'bottomleft' });
