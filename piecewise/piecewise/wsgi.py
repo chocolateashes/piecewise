@@ -1,3 +1,4 @@
+import decimal
 from flask import Flask, request
 from flask.json import dumps
 from piecewise.aggregate import AverageRTT
@@ -38,7 +39,7 @@ def query_statistics(aggregation):
         return (results, None, { 'Content-type' : 'text/csv' })
     else:
         results = _rows_to_geojson(results)
-        return (pprint.pprint(results),  None, { 'Content-type' : 'application/json' })
+        return (dumps(results), None, { 'Content-type' : 'application/json' })
 
 def _rows_to_csv(rows):
     stringio = StringIO.StringIO()
@@ -71,6 +72,9 @@ def _rows_to_geojson(rows):
     else:
         def row_to_feature(r):
             properties = dict(r.items())
+            for k, v in properties.iteritems():
+                if isinstance(v, decimal.Decimal):
+                    properties[k] = float(v)
             geometry = None
             return {
                 "type" : "Feature",
