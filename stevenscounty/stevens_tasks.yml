@@ -35,7 +35,7 @@
 - name: Copy geo data to server
   copy: src=stevenscounty/{{ item.src }} dest=/opt/piecewise_web/{{ item.dest }}
   with_items:
-    - { src: wa_censusblocks.geojson, dest: wa_censusblocks.geojson }
+    - { src: wa_censusblocks.topojson, dest: wa_censusblocks.topojson }
     - { src: wa_censusblocks, dest: '' }
     - { src: center.js, dest: js/center.js }
 
