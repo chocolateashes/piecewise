@@ -1,1 +1,1 @@
-127.0.0.1 ansible_ssh_user=root ansible_connection=local
+52.183.41.88 ansible_ssh_user=root

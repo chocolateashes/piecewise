@@ -125,7 +125,7 @@ $ git clone https://github.com/your-github-name/piecewise.git
   * Enter the cloned directory and edit playbook.yml, removing the 2 lines referencing sudo.
   * Create a file named "hosts" with the following content, where, of course, you replace "<ip or name of VM>" with either the domain name or IP address of the VM:
 
-  ```<ip or name of VM> ansible_ssh_user=root```
+  ```(IP address or domain name of VM) ansible_ssh_user=root```
 
   * Run Ansible with:
 
