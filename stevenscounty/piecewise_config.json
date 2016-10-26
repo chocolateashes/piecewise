@@ -13,6 +13,7 @@
                     "AT&T": ["AT&T Services", "AT&T Mobility LLC", "Wayport"],
                     "Centurylink": ["Qwest", "Embarq", "Centurylink", "Centurytel"],
                     "Comcast": ["Comcast Cable Communications"],
+                    "Desert Winds / Internet Express": ["Desert Winds Wireless Inc"],
                     "Northwest Open Access Network": ["Northwest Open Access Network"],
                     "Secure Webs.com": ["SECURE WEBS INC"],
                     "Startouch": ["STARTOUCH INC"],
@@ -24,8 +25,8 @@
                     "Phonoscope Lightwave": ["PS Lightwave"],
                     "Ptera": ["Ptera Inc."],
                     "Washington State K-20 Education Network": ["Washington State K-20 Telecommunications Network"],
-                    "ViaSat, Inc.": ["ViaSat,Inc."],
-                    "Zayo": ["AS6461 Zayo Bandwidth Inc"]
+                    "Excede / Wildblue": ["ViaSat,Inc."],
+                    "Zayo": ["Zayo Bandwidth Inc"]
                 } }
         ],
         "statistics": [
