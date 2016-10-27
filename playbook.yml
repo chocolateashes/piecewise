@@ -2,5 +2,7 @@
 - hosts: all
   tasks:
     - include: system_tasks.yml
+      sudo: True
     - include: user_tasks.yml
     - include: stevenscounty/stevens_tasks.yml
+      sudo: True
