@@ -347,7 +347,7 @@ def admin_extra_data():
 def append_extra_data():
     isp_types = ['default', 'airpipe-wireless', 'att', 'century-link', 'comcast', 'charter', 'cougar-wireless', 'desert-winds-wireless', 'dish-net', 'ecliptixnet-wireless', 'excede-wild-blue', 'hughes-net', 'ptera-wireless', 'verizon', 'other']
     connection_types = ['default', 'wired', 'wireless-single', 'wireless-multiple']
-    cost_of_service_types = ['default', 'less_than_25', '25_50', '50_75', '75_100', '100_or_above', 'dont_know']
+    cost_of_service_types = ['default', 'less_than_25', '25_50', '50_75', '75_100', '100_150', '150_200', '200_or_above', 'dont_know']
 
     try:
         if request.args.get('longitude') and request.args.get('latitude'):
