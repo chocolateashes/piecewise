@@ -72,9 +72,6 @@ In our sample directory, we put our htaccess file in ```/opt/piecewise.git/htacc
 
 Once you have successfully deployed a new Piecewise server, you'll undoubtedly want to make customizations to the visual display from its default colors, layout, text, etc. Because of the way Piecewise is deployed, this can be somewhat confusing at first. Understanding the location of files and how they get updated will help.
 
-  
-
-
 Generally, we have used the steps below to prototype and then commit front-end changes to a running Piecewise server:
 
 **Prototyping changes**
@@ -110,28 +107,60 @@ vagrant@jessie $ sudo service uwsgi restart
 vagrant@jessie $ sudo service nginx restart
 ```
 
-## Deploying to any machine (or VM) without Vagrant
+## Deploying to any machine (or VM) using Ansible without Vagrant
 
-It is possible to deploy a piecewise server to any machine. These notes were taken during an installation on RHEL 7.1/Centos 7.1. Note that there is a piecewise branch for rhel7 that can be used to deploy to Red Hat or Centos machines.
+The procedure described above is useful when you want to deploy Piecewise into a local VM for testing and development. But in most cases, once you've customized Piecewise and are ready to deploy it on the Internet, you likely have a server or virtual machine where the application will be hosted. In this case, we'll deploy our customized Piecewise code using Ansible only, after making a couple small configurations on your deployment workstation and on your remote server or VM.
 
-  * Spin up a VM with the standard specs (2 core CPU, 4GB RAM, 40GB disk were used in our initial testing). It can be running pretty much any recent version of just about any Linux distro (RHEL 7.1 is fine).
-  * If you don't already have one, create an SSH key pair to be used on the machine from which deployment to the VM will happen. This could easily just be your personal workstation or any other Linux machine. When you've created the key pair open the public key and copy it to your clipboard.
-  * Login to the VM as root and add the public key from the previous step to /root/.ssh/authorized_keys. This will allow the user on the deployment workstation to do things via pubkey authentication on the VM as root without needing a password.
-  * On the deployment workstation, install Ansible... probably something as easy as '$ yum install ansible'. I happen to be using v 1.9.2, but you can probably use whichever version as long as it is reasonably recent.
-  * On the deployment workstation make a git clone of the Piecewise repository:
-```
-$ git clone https://github.com/your-github-name/piecewise.git
-```
-  * Enter the cloned directory and edit playbook.yml, removing the 2 lines referencing sudo.
-  * Create a file named "hosts" with the following content, where, of course, you replace "<ip or name of VM>" with either the domain name or IP address of the VM:
+The instructions below were tested on a server/VM running Debian Jessie, though any version of Linux shoud be supported.
+
+### Generate or obtain an SSH key for your deployment workstation
+
+In order to run Ansible from your deployment workstation, and to seamlessly deploy your customized Piecewise code to a remote server, you need an SSH public key. On most Linux and Mac systems, you can find your SSH public key in ```/home/username/.ssh/```. It is usually named ```id_rsa.pub```. Locate this file and copy its contents. In the next step, you'll paste your SSH public key into a file on your server or VM.
+
+### Prepare your server or VM
+
+  * Configure a VM in your cloud service of choice (AWS, Linode, Azure, etc.) or a bare-metal server with a static IP address available on the Internet, running Debian Jessie. If desired, configure your server to respond to a domain name instead of just an IP address.
+  * Login to your server or VM and create a user account with sudo privileges, to be used to deploy your Piecewise code 
+  * Open the file ```/home/yourusername/.ssh/authorized_keys```, replacing "yourusername" with the name of the user you just created. If the file ```authorized_keys``` doesn't exist, create a new file with that name
+  * Paste the contents of your SSH public key into this file and save.
+  * Now Ansible can ssh to this VM or server without the need for a password
+  * As the root user on your VM or server, paste the contents of you SSH public key into the root user's authorized_keys file, located in ```/root/.ssh/authorized_keys``` and save.
+  * Now Ansible can login as your deployment user, and act as the root user to deploy to your server without needing a password
+
+  ```TO DO: Revise these instructions after refactoring Ansible playbooks to use ansible-vault```
+
+### Update Ansible's hosts file and Deploy Piecewise to the remote server
+
+On your deployment workstation, in your piecewise folder, create a file named ```hosts``` with the line below, replacing "(ip or name of VM)" with either the domain name or IP address of the VM:
 
   ```(IP address or domain name of VM) ansible_ssh_user=root```
 
-  * Run Ansible with:
+Save the file, then run Ansible to deploy your customized Piecewise code to your VM or server:
 
-    $ ansible-playbook -i hosts playbook.yml
+```$ ansible-playbook -i hosts playbook.yml```
 
-You'll see Ansible do it's thing, printing information to the screen. It should complete within a few minutes, and (assuming your terminal supports color) you shouldn't see any red in the information printed. If this is the case, then the basic deployment went fine and should be done.
+Ansible will run the playbook, printing information to the screen. It should complete within a few minutes, and (assuming your terminal supports color) you shouldn't see any red in the information printed. If this is the case, then the basic deployment went fine and should be done.
+
+When Ansible has completed, login to your VM or server over SSH, and proceed with the steps below.
+
+  * As root, edit the file ```/opt/piecewise/piecewise/bigquery.py``` and replace the value for **PROJECT_NUMBER** with the project number from Google Developers Console.
+
+```
+$ sudo vi /opt/piecewise/piecewise/bigquery.py
+```
+
+  * Run the piecewise ingest command:
+```
+$ cd /opt/piecewise
+$ sudo python -m piecewise.ingest
+```
+
+The first time you run **piecewise.ingest**, you will be prompted with a URL to authenticate your piecewise instance with the Google account that M-Lab whitelisted. Open the URL provided, authenticate using the Google account you set up earlier, and allow access, then copy verification code onto the command line.
+
+If successful, you will see a number of messages about BigQuery jobs running. If you get an error, it may be due to a misconfiguration or if you used a different account than the one associated with your project in the Google Developer Console.
+
+Once the last command above completes with no errors, you should have a running instance of Piecewise available at your server or VM's public IP address or domain name. 
+
 
 ## Exporting Data from Postgres, Loading Data Into Postgres
 
