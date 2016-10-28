@@ -159,23 +159,9 @@ The first time you run **piecewise.ingest**, you will be prompted with a URL to 
 
 If successful, you will see a number of messages about BigQuery jobs running. If you get an error, it may be due to a misconfiguration or if you used a different account than the one associated with your project in the Google Developer Console.
 
-Once the last command above completes with no errors, you should have a running instance of Piecewise available at your server or VM's public IP address or domain name. 
+  * Restart Python's uwsgi service:
+  ```
+  $ sudo service uwsgi restart
+  ```
 
-
-## Exporting Data from Postgres, Loading Data Into Postgres
-
-If you want to quickly get started developing with an example dataset, you can load a database dump. Note that the example below are from a running Seattle-based example. Your table names will likely be different, so please adjust as needed.
-
-**Create database dump:**
-```
-vagrant@jessie $ sudo pg_dump -Ft -U postgres piecewise --clean -t results -t district_statistics -t block_statistics | gzip > piecewise.seattle.db.tar.gz
-```
-
-Upload the dump file to a Github repository or other web-accessible location.
-
-**Load database dump:**
-
-```
-vagrant@jessie $ wget https://web location of your database dump/piecewise.seattle.db.tar.gz
-vagrant@jessie $ sudo gunzip -c piecewise.seattle.db.tar.gz | pg_restore -U postgres -d piecewise -O --clean
-```
+You should have a running instance of Piecewise available at your server or VM's public IP address or domain name. 
