@@ -130,30 +130,21 @@ Open the file ```baltimore_example/center.js```, and replace the latitude and lo
 
 Piecewise will download raw test data from M-Lab that was submitted from within the four coordinates you gathered in the previous step. Its real power, however, is that Piecewise will aggregate the raw data into smaller shaped areas within that bounding box. You can define multiple aggregations and use them as different layers in the same map or visualization. For example, we might use city council districts, counties, countries, census blocks or other shapes to aggregate M-Lab data.
 
-To do these aggregations, Piecewise uses two geodata files for each aggregation layer you wish to use on your map. One of the files is used to aggregate M-Lab data and the other to present the aggregate data on the default map view.
+To do these aggregations, Piecewise requires at least one geodata file containing the areas you wish M-Lab data to be aggregated into. This example uses shapefiles but your geodata can be in any of the following formats: 
 
-For each aggregation you wish to present, you will need:
+  * Shapefile (.shp)
+  * Geojson
+  * Topojson
 
-* a **shape file (.shp)** - used by piecewise scripts to aggregate M-Lab data and save the statistics in a database
-* a **topojson file (.topojson or .json)** - created from the shape file above, used to present aggregate data on the map
+The US Census Bureau provides downloadable shapefiles for a variety of boundaries in the US: [https://www.census.gov/geo/maps-data/data/cbf/cbf_blkgrp.html](https://www.census.gov/geo/maps-data/data/cbf/cbf_blkgrp.html). In the US, cities often publish shapefiles for their communities that often have been amended or corrected.
 
-Shapefiles are the most widely used geodata format used in the GIS community. The US Census Bureau provides downloadable shapefiles for a variety of boundaries in the US: [https://www.census.gov/geo/maps-data/data/cbf/cbf_blkgrp.html](https://www.census.gov/geo/maps-data/data/cbf/cbf_blkgrp.html). In the US, GIS people in cities or states often publish shapefiles for their communities that often amend or correct the shapefiles provided by the US Census Bureau. ```TO DO: add reference to international shapefile sources```
- 
-Once you locate the shapefile(s) you need, it's good practice to open the shapefile in [QGIS](http://www.qgis.org/en/site/) or another GIS program to confirm that it meets the requirements to use within your Piecewise application. When you open the shapefile(s) in your GIS program, **make a note of the name of its unique key field.** You'll use that later in these instructions.
-
-  Shapefile requirements:
-
-  * Must contain at least one field that serves as a unique key, for example "geoid" or "geoid10" in the case of census block groups
-  * Numeric fields should be of the type "integer" or "float". ```TO DO: test float```
-  * Text fields should be of the type "string"
-  * Fields of the type "real" are NOT supported
-
+Once you locate the shapefile(s) you need, it's good practice to open the shapefile in [QGIS](http://www.qgis.org/en/site/) or another program to confirm it's ok.
 
 **Create a folder for your geodata file(s)**
 
 ```mkdir baltimore_example/maryland_blkgrps```
 
-Save/copy your shapefile(s) to the folder. **Note:** Shapefiles usually come with several other related project files. **All project files that come with your .shp file should be placed in your Piecewise application folder, not just the .shp file.**
+Save/copy your shapefiles to the folder.
 
 **Create a topojson file from your shapefile**
 
