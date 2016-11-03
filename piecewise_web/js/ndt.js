@@ -290,7 +290,7 @@ NDTjs.prototype.createWebsocket = function (serverAddress, serverPort, urlPath,
                                             protocol) {
   var createdWebsocket;
 
-  createdWebsocket = new WebSocket('wss://' + serverAddress + ':' +
+  createdWebsocket = new WebSocket('ws://' + serverAddress + ':' +
                                        serverPort + urlPath, protocol);
   createdWebsocket.binaryType = 'arraybuffer';
   return createdWebsocket;
