@@ -83,8 +83,8 @@
 
 # Config for http piecewise server. Note that geolocation in Chrome won't work without HTTPS
 server {
-	listen 80 52.183.27.58;
-	listen [::]:80 52.183.27.58 ipv6only=on;
+	listen 80;
+	listen [::]:80 ipv6only=on;
 
 	root /opt/piecewise_web;
 	index index.html index.htm;
