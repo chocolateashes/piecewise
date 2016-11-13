@@ -15,6 +15,7 @@
     - python-dev
     - gdal-bin
     - unzip
+    - build-essential
 - name: Fetch telescope
   git: repo=https://github.com/m-lab/telescope.git
        dest=/opt/telescope/
@@ -61,6 +62,7 @@
   file: path=/var/log/piecewise/ state=directory
 - name: Install convenience python modules
   pip: name=bigquery state=latest
+
 - name: Deploy configuration files
   copy: src=conf/ dest=/ owner=root group=root
 - name: Fix postgres configuration permissions

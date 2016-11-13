@@ -90,7 +90,7 @@ server {
 	index index.html index.htm;
 
 	# Make site accessible from http://localhost/
-	server_name stevenscountybroadband.net;
+	server_name 168.62.227.64;
 
     location = /stats { rewrite ^ /stats/; }
     location /stats  { try_files $uri @stats; }
@@ -126,6 +126,11 @@ server {
 	location /admin {
 		auth_basic "Custom Data Admin";
 		auth_basic_user_file /opt/piecewise.git/htpasswd;
+	}
+
+	location /app/app.js {
+    	proxy_pass http://localhost:3000;
+    	proxy_set_header Host $host;
 	}
 
 	# Only for nginx-naxsi used with nginx-naxsi-ui : process denied requests
