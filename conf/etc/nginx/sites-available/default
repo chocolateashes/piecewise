@@ -128,10 +128,10 @@ server {
 		auth_basic_user_file /opt/piecewise.git/htpasswd;
 	}
 
-	location /app/app.js {
-    	proxy_pass http://localhost:3000;
-    	proxy_set_header Host $host;
-	}
+	#location /app/app.js {
+    #	proxy_pass http://localhost:3000;
+    #	proxy_set_header Host $host;
+	#}
 
 	# Only for nginx-naxsi used with nginx-naxsi-ui : process denied requests
 	#location /RequestDenied {
