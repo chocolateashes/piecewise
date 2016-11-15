@@ -24,7 +24,7 @@
 	<script src='js/center.js'></script>
 	<script src="js/jquery-ui.min.js"></script>
 	<script src="js/jquery-ui-slider-pips.min.js"></script>
-	
+
 	<link rel="icon" href="app/assets/images/mlab_logo_m.ico">
 	<link rel="stylesheet" href="app/assets/css/main.css" />
 </head>
@@ -120,6 +120,20 @@
 				<input name="bigquery_key" id="bigquery_key" type="hidden" />
 			</div>
 			<div id="test-container">
+			<section id="sidebar2">
+			<div class="inner">
+				<nav>
+					<ul>
+						<li><a href="#intro" class="active" translate>Measure</a></li>
+						<li><a href="#about" translate>About</a></li>
+						<li><a href="#contact" translate>Contact</a></li>
+					</ul>
+				</nav>
+			</div>
+			</section>
+
+			<!-- Wrapper -->
+			<div id="wrapper" ng-view></div>
 				<div id="ndt-div">
 
 					<!--<div id="ndt-svg"></div> -->
