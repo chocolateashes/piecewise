@@ -68,6 +68,10 @@ server {
 		auth_basic_user_file /opt/piecewise.git/htpasswd;
 	}
 
+	location /app {
+        alias /opt/piecewise_web/app/;
+    }
+
 	ssl on;
 	ssl_certificate /etc/ssl/localcerts/localcert.pem;
 	ssl_certificate_key /etc/ssl/localcerts/localcert.key;
