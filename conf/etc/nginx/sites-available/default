@@ -161,7 +161,7 @@ server {
 	#location ~ /\.ht {
 	#	deny all;
 	#}
-}
+#}
 
 
 # another virtual host using mix of IP-, name-, and port-based configuration
