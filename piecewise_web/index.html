@@ -16,17 +16,12 @@
 	<script src='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.2.0/leaflet-omnivore.min.js'></script>
 	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script src='js/mlab.js'></script>
-<!--
 	<script src='js/ndt.js'></script>
 	<script src='js/ndt_d3.js'></script>
--->
 	<script src='js/d3.v3.min.js'></script>
 	<script src='js/center.js'></script>
 	<script src="js/jquery-ui.min.js"></script>
 	<script src="js/jquery-ui-slider-pips.min.js"></script>
-
-	<link rel="icon" href="app/assets/images/mlab_logo_m.ico">
-<!--	<link rel="stylesheet" href="app/assets/css/main.css" /> -->
 </head>
 
 <body>
@@ -121,82 +116,7 @@
 			</div>
 			<div id="test-container">
 				<div id="ndt-div">
-					<section id="intro" class="wrapper style1 fullscreen">
-					  <div class="featureWarning" ng-show="unsupportedSystem">
-					    <p translate>Your browser may not be compatible with the M-Lab speed test. Please update to a more current version and try again.</p>
-					  </div>
-					  <div class="features">
-					    <section>
-					      <h1 translate>Test Your Speed</h1>
-					      <p class="startIntroLabel">
-					        <span translate>M-Lab's Speed Test provides advanced diagnostics of the performance of your broadband connection through quick measurements.</span><br />
-					      </p>
-					      <p>
-					        <input type="checkbox" id="demo-human" name="demo-human" ng-model="privacyConsent">
-					        <label for="demo-human" translate style="font-size: smaller;">I agree to the <a href="http://www.measurementlab.net/privacy/">data policy</a>, which includes retention and publication of IP addresses.</label>
-					      </p>
-					      <p>
-					        <div class="row">
-					        	<div class="6u">
-					            <a class="button special startButton big" ng-click="startTest()" ng-class="{disabled: (privacyConsent !== true || startButtonClass === 'disabled')}">
-					              <span ng-show="!measurementComplete && startButtonClass != 'disabled'"><span translate>Begin</span> <i class="fa fa-play" aria-hidden="true"></i></span>
-					              <span ng-show="measurementComplete && startButtonClass != 'disabled'"><span translate>Again</span> <i class="fa fa-repeat" aria-hidden="true"></i></span>
-					              <span ng-show="startButtonClass == 'disabled'"><span translate>Testing</span> <i class="fa fa-circle-o-notch" aria-hidden="true"></i></span>
-					            </a>
-					        	</div>
-					        	<div class="6u">
-					            <span translate ng-show="privacyConsent !== true" class="privacyConsentMessage">Please agree to the data policy prior to the test.</span>
-					        	</div>
-					        </div>
-					      </p>
-					      <small translate>For more on M-Lab's data collection and measurement, including the disclosure of IP addresses, see our <a href="http://www.measurementlab.net/privacy/">Privacy Policy</a>.</small>
-					    </section>
-					    <section id="measurementSpace">
-					      <div ng-show="!measurementComplete">
-					        <h1 style="height: 0.5em"></h1>
-					        <div class="progress-bar">
-					          <canvas id="activeProgress" class="progress-active"  height="275px" width="275px"></canvas>
-					          <div class="progress-label">
-					            <h2>{{ currentSpeed }}</h2>
-					            <h4>{{ currentPhase }}</h4>
-					          </div>
-					        </div>
-					      </div>
-					      <div ng-show="measurementComplete">
-					        <h1 translate>Results</h1>
-					        <table class="alt">
-					  				<tbody>
-					            <tr>
-					              <td><i class="fa fa-server" aria-hidden="true"></i></td>
-					  						<td translate>Test Server</td>
-					  						<td><strong>{{ location }}</strong></td>
-					  					</tr>
-					            <tr>
-					              <td><i class="fa fa-download" aria-hidden="true"></i></td>
-					  						<td translate>Download</td>
-					  						<td><strong>{{ measurementResult.s2cRate }}</strong></td>
-					  					</tr>
-					            <tr>
-					              <td><i class="fa fa-upload" aria-hidden="true"></i></td>
-					  						<td translate>Upload</td>
-					  						<td><strong>{{ measurementResult.c2sRate }}</strong></td>
-					  					</tr>
-					            <tr>
-					              <td><i class="fa fa-hourglass-start" aria-hidden="true"></i></td>
-					  						<td translate>Latency</td>
-					  						<td><strong>{{ measurementResult.latency }}</strong></td>
-					  					</tr>
-					            <tr>
-					              <td><i class="fa fa-signal" aria-hidden="true"></i></td>
-					  						<td translate>Retransmission</td>
-					  						<td><strong>{{ measurementResult.loss }}</strong></td>
-					  					</tr>
-					  				</table>
-					        </div>
-					    </section>
-					  </div>
-					</section>
-					<!--<div id="ndt-svg"></div> -->
+					<div id="ndt-svg"></div>
 				</div>
 				<div id="approx-loc">
 					<h3 class="league-gothic">Test your speed!</h3>
@@ -277,82 +197,81 @@
 	</div>
 </div>
 
-<!-- <script>
-//	var ndtServer,
-//		ndtServerIp,
-//		ndtPort = "3001",
-//		ndtPath = "/ndt_protocol",
-//		ndtUpdateInterval = 1000,
-//		c2sRate,
-//		s2cRate,
-//		MinRTT;
-//
-//	getNdtServer();
-//
-//	uncheckAcknowledgement();
+<script>
+	var ndtServer,
+		ndtServerIp,
+		ndtPort = "3001",
+		ndtPath = "/ndt_protocol",
+		ndtUpdateInterval = 1000,
+		c2sRate,
+		s2cRate,
+		MinRTT;
 
-//	NDT_meter = new NDTmeter('#ndt-svg');
-//	NDT_meter.meter.on("click", function () {
-//		NDT_client = new NDTjs(ndtServer, ndtPort, ndtPath, NDT_meter, ndtUpdateInterval);
-//		NDT_client.startTest();
-//	});
+	getNdtServer();
 
-//	if ("geolocation" in navigator) {
-//		navigator.geolocation.getCurrentPosition(success, error);
-//	}
+	uncheckAcknowledgement();
 
-//	function success(position) {
+	NDT_meter = new NDTmeter('#ndt-svg');
+	NDT_meter.meter.on("click", function () {
+		NDT_client = new NDTjs(ndtServer, ndtPort, ndtPath, NDT_meter, ndtUpdateInterval);
+		NDT_client.startTest();
+	});
 
-//		document.getElementById('latitude').value = position.coords.latitude;
-//		document.getElementById('longitude').value = position.coords.longitude;
+	if ("geolocation" in navigator) {
+		navigator.geolocation.getCurrentPosition(success, error);
+	}
 
-//		var xhr = new XMLHttpRequest(),
-//		currentLocationURL = "https://nominatim.openstreetmap.org/reverse?format=json&lat=" + position.coords.latitude + "&lon=" + position.coords.longitude + "&zoom=18&addressdetails=1";
+	function success(position) {
 
-//		var currentLoc;
-//		xhr.open('GET', currentLocationURL, true);
-//		xhr.send();
-//		xhr.onreadystatechange = function () {
-//			if (xhr.readyState === 4) {
-//				if (xhr.status === 200) {
-//					currentLoc = JSON.parse(xhr.responseText);
-//					console.log("Location received");
+		document.getElementById('latitude').value = position.coords.latitude;
+		document.getElementById('longitude').value = position.coords.longitude;
+
+		var xhr = new XMLHttpRequest(),
+		currentLocationURL = "https://nominatim.openstreetmap.org/reverse?format=json&lat=" + position.coords.latitude + "&lon=" + position.coords.longitude + "&zoom=18&addressdetails=1";
+
+		var currentLoc;
+		xhr.open('GET', currentLocationURL, true);
+		xhr.send();
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState === 4) {
+				if (xhr.status === 200) {
+					currentLoc = JSON.parse(xhr.responseText);
+					console.log("Location received");
 
 					// currentLocText.text(currentLoc.address.road + currentLoc.address.neighbourhood + currentLoc.address.suburb + currentLoc.address.city + currentLoc.address.state);
-//					$('#mobile-container').append('<div id="mobile-approx-loc"></div>')
-//					$('#approx-loc, #mobile-approx-loc').append("<p>Searching from:</p><p>" + currentLoc.address.road + ", " + currentLoc.address.city + ", " + currentLoc.address.state + "</p>");
-//				} else {
-//					console.log('Location lookup failed');
-//				}
-//			}
-//		};
-//	}
+					$('#mobile-container').append('<div id="mobile-approx-loc"></div>')
+					$('#approx-loc, #mobile-approx-loc').append("<p>Searching from:</p><p>" + currentLoc.address.road + ", " + currentLoc.address.city + ", " + currentLoc.address.state + "</p>");
+				} else {
+					console.log('Location lookup failed');
+				}
+			}
+		};
+	}
 
-//	function error(error) {
-//		document.getElementById('msg').innerHTML = 'ERROR(' + error.code + '): ' + error.message;
-//	}
+	function error(error) {
+		document.getElementById('msg').innerHTML = 'ERROR(' + error.code + '): ' + error.message;
+	}
 
-//	function getNdtServer () {
-//		var xhr = new XMLHttpRequest(),
-//			mlabNsUrl = 'https://mlab-ns.appspot.com/ndt?format=json';
-//
-//		xhr.open('GET', mlabNsUrl, true);
-//		xhr.send();
-//		xhr.onreadystatechange = function () {
-//			if (xhr.readyState === 4) {
-//				if (xhr.status === 200) {
-//					ndtServer = JSON.parse(xhr.responseText).fqdn;
-//					ndtServerIp = JSON.parse(xhr.responseText).ip;
-//					console.log('Using M-Lab Server ' + ndtServer);
-//				} else {
-//					console.log('M-Lab NS lookup failed.');
-//				}
-//			}
-//		};
-//	};
+	function getNdtServer () {
+		var xhr = new XMLHttpRequest(),
+			mlabNsUrl = 'https://mlab-ns.appspot.com/ndt?format=json';
 
+		xhr.open('GET', mlabNsUrl, true);
+		xhr.send();
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState === 4) {
+				if (xhr.status === 200) {
+					ndtServer = JSON.parse(xhr.responseText).fqdn;
+					ndtServerIp = JSON.parse(xhr.responseText).ip;
+					console.log('Using M-Lab Server ' + ndtServer);
+				} else {
+					console.log('M-Lab NS lookup failed.');
+				}
+			}
+		};
+	};
 </script>
--->
+
 <div id='map'>
 <div id="mapview-icons">
 	<a href="index.html" alt="Take the Speed test" title="Take the Speed Test"><img src="images/speed.svg" id="mapview-test-icon" alt="Take the Speed test" title="Take the Speed Test" /></a>
@@ -535,26 +454,7 @@ for (var geoLayer in geoLayers) {
 }
 
 </script>
-<script src="app/libraries/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
-<script src="app/libraries/angular/angular.js"></script>
-<script src="app/libraries/angular-route/angular-route.js"></script>
-<script src="app/libraries/angular-gettext/dist/angular-gettext.min.js"></script>
-<script src="app/libraries/jquery/dist/jquery.min.js"></script>
-<script src="app/libraries/skel/dist/skel.min.js"></script>
 
-<script src="app/assets/js/jquery.scrollex.min.js"></script>
-<script src="app/assets/js/jquery.scrolly.min.js"></script>
-<script src="app/assets/js/util.js"></script>
-<script src="app/assets/js/main.js"></script>
-
-<script type="text/javascript" src="app/assets/js/ndt-controller.js"></script>
-<script type="text/javascript" src="app/assets/js/ndt-browser-client.js"></script>
-<script type="text/javascript" src="app/assets/js/ndt-wrapper.js"></script>
-
-<script src="app/measure/measure.js"></script>
-<script src="app/services/gaugeService.js"></script>
-<script src="app/services/mlabService.js"></script>
-<script src="app/app.js"></script>
 </body>
 
 </html>
