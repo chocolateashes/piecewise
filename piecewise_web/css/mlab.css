@@ -32,6 +32,10 @@ html, body {
 	padding: 5px;
 */
 }
+#test-frame {
+  width: 100%;
+  height: 500px;
+}
 
 #ndt {
 	width: 100%;
@@ -40,10 +44,12 @@ html, body {
 
 #ndt-div {
 	height: auto;
-	width: 30%;
+	width: auto%;
 	margin: 5%;
-	float: left;
+/*	
+  float: left;
   max-width: 175px;
+*/  
 }
 
 #ndt-status {
