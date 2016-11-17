@@ -116,21 +116,23 @@
 			</div>
 			<div id="test-container">
 				<div id="ndt-div">
-					<div id="ndt-svg"></div>
+					<iframe src="app/index.html"></iframe>
 				</div>
 				<div id="approx-loc">
-					<h3 class="league-gothic">Test your speed!</h3>
+<!--					<h3 class="league-gothic">Test your speed!</h3>
 					<div id="ndt-status"></div>
+-->					
 				</div>
 			</div>
 			<div id="ndt-results" class="ndt-related">
 				<div class="container">
-					<div id="your-results">
+<!--					<div id="your-results">
 						<h3 class="league-gothic">Your test results</h3>
 						<p>Download speed: <span id="s2cRate"></span> mbps</p>
 						<p>Upload speed: <span id="c2sRate"></span> mbps</p>
 						<p>Minimum Round Trip Time: <span id="MinRTT"></span> ms</p>
 					</div>
+-->					
 					<div id="thankyou">
 						<h3 class="league-gothic">Thank you!</h3>
 						<strong>Your test results will be combined with others and will appear on the map at the end of the month.</strong><br /><br />
@@ -196,7 +198,7 @@
 		</div>
 	</div>
 </div>
-
+<!--
 <script>
 	var ndtServer,
 		ndtServerIp,
@@ -217,6 +219,8 @@
 		NDT_client.startTest();
 	});
 
+######### geolocation code
+
 	if ("geolocation" in navigator) {
 		navigator.geolocation.getCurrentPosition(success, error);
 	}
@@ -225,7 +229,7 @@
 
 		document.getElementById('latitude').value = position.coords.latitude;
 		document.getElementById('longitude').value = position.coords.longitude;
-
+ 
 		var xhr = new XMLHttpRequest(),
 		currentLocationURL = "https://nominatim.openstreetmap.org/reverse?format=json&lat=" + position.coords.latitude + "&lon=" + position.coords.longitude + "&zoom=18&addressdetails=1";
 
@@ -247,6 +251,7 @@
 			}
 		};
 	}
+#########
 
 	function error(error) {
 		document.getElementById('msg').innerHTML = 'ERROR(' + error.code + '): ' + error.message;
@@ -271,7 +276,7 @@
 		};
 	};
 </script>
-
+-->
 <div id='map'>
 <div id="mapview-icons">
 	<a href="index.html" alt="Take the Speed test" title="Take the Speed Test"><img src="images/speed.svg" id="mapview-test-icon" alt="Take the Speed test" title="Take the Speed Test" /></a>
