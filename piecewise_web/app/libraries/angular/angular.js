@@ -12769,7 +12769,7 @@ var $jsonpCallbacksProvider = function() {
  */
 
 var PATH_MATCH = /^([^\?#]*)(\?([^#]*))?(#(.*))?$/,
-    DEFAULT_PORTS = {'http': 8080, 'https': 4443, 'ftp': 21};
+    DEFAULT_PORTS = {'http': 80, 'https': 443, 'ftp': 21};
 var $locationMinErr = minErr('$location');
 
 
