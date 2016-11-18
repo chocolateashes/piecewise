@@ -112,23 +112,14 @@
 			</div>
 			<div id="test-container">
 				<div id="ndt-div">
-					<iframe id="test-frame" src="app/index.html"></iframe>
+						<!-- Wrapper -->
+					<div id="wrapper" ng-view></div>
+<!--				<iframe id="test-frame" src="app/index.html"></iframe>	-->
 				</div>
-				<div id="approx-loc">
-<!--					<h3 class="league-gothic">Test your speed!</h3>
-					<div id="ndt-status"></div>
--->					
-				</div>
+				<div id="approx-loc"></div>
 			</div>
 			<div id="ndt-results" class="ndt-related">
 				<div class="container">
-<!--					<div id="your-results">
-						<h3 class="league-gothic">Your test results</h3>
-						<p>Download speed: <span id="s2cRate"></span> mbps</p>
-						<p>Upload speed: <span id="c2sRate"></span> mbps</p>
-						<p>Minimum Round Trip Time: <span id="MinRTT"></span> ms</p>
-					</div>
--->					
 					<div id="thankyou">
 						<h3 class="league-gothic">Thank you!</h3>
 						<strong>Your test results will be combined with others and will appear on the map at the end of the month.</strong><br /><br />
@@ -194,6 +185,38 @@
 		</div>
 	</div>
 </div>
+<script>
+	if ("geolocation" in navigator) {
+		navigator.geolocation.getCurrentPosition(success, error);
+	}
+
+	function success(position) {
+
+		document.getElementById('latitude').value = position.coords.latitude;
+		document.getElementById('longitude').value = position.coords.longitude;
+ 
+		var xhr = new XMLHttpRequest(),
+		currentLocationURL = "https://nominatim.openstreetmap.org/reverse?format=json&lat=" + position.coords.latitude + "&lon=" + position.coords.longitude + "&zoom=18&addressdetails=1";
+
+		var currentLoc;
+		xhr.open('GET', currentLocationURL, true);
+		xhr.send();
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState === 4) {
+				if (xhr.status === 200) {
+					currentLoc = JSON.parse(xhr.responseText);
+					console.log("Location received");
+
+					// currentLocText.text(currentLoc.address.road + currentLoc.address.neighbourhood + currentLoc.address.suburb + currentLoc.address.city + currentLoc.address.state);
+					$('#mobile-container').append('<div id="mobile-approx-loc"></div>')
+					$('#approx-loc, #mobile-approx-loc').append("<p>Searching from:</p><p>" + currentLoc.address.road + ", " + currentLoc.address.city + ", " + currentLoc.address.state + "</p>");
+				} else {
+					console.log('Location lookup failed');
+				}
+			}
+		};
+	}
+</script>
 <!--
 <script>
 	var ndtServer,
@@ -456,6 +479,27 @@ for (var geoLayer in geoLayers) {
 
 </script>
 
+		<!-- Speed.measurementlab.net Scripts -->
+		<script src="/app/libraries/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+		<script src="/app/libraries/angular/angular.js"></script>
+		<script src="/app/libraries/angular-route/angular-route.js"></script>
+		<script src="/app/libraries/angular-gettext/dist/angular-gettext.min.js"></script>
+		<script src="/app/libraries/jquery/dist/jquery.min.js"></script>
+		<script src="/app/libraries/skel/dist/skel.min.js"></script>
+
+		<script src="/app/assets/js/jquery.scrollex.min.js"></script>
+		<script src="/app/assets/js/jquery.scrolly.min.js"></script>
+		<script src="/app/assets/js/util.js"></script>
+		<script src="/app/assets/js/main.js"></script>
+
+		<script type="text/javascript" src="/app/assets/js/ndt-controller.js"></script>
+		<script type="text/javascript" src="/app/assets/js/ndt-browser-client.js"></script>
+		<script type="text/javascript" src="/app/assets/js/ndt-wrapper.js"></script>
+
+		<script src="/app/measure/measure.js"></script>
+		<script src="/app/services/gaugeService.js"></script>
+		<script src="/app/services/mlabService.js"></script>
+		<script src="/app/app.js"></script> 
 </body>
 
 </html>
