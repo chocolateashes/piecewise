@@ -13,7 +13,7 @@ angular.module('Measure', [
 
 .config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $routeProvider.when('/', {
-    templateUrl: '/app/measure/measure.html',
+    // templateUrl: '/app/measure/measure.html',
     controller: 'MeasureCtrl'
   });
 }])
