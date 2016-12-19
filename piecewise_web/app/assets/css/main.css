@@ -2553,6 +2553,7 @@ span.privacyConsentMessage {
 		input[name="advertised_download"],
 		input[name="advertised_upload"] {
 			width:2em;
+			padding: 2px;
 		}
 
 		input[type="text"]:invalid,
