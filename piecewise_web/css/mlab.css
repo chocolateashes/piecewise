@@ -1132,7 +1132,7 @@ a.leaflet-popup-close-button {
     display:inline;
   }
   #thankyou ul {
-    padding:0 10px;
+    padding: 0.5em 2em;
   }
   #ndt-status + p {
     font-weight: bold;

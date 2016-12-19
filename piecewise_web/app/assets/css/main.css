@@ -2250,7 +2250,7 @@ span.privacyConsentMessage {
 		.features section {
 			padding: 3.5em 3em 1em 7em ;
 			width: 50%;
-			border-top: solid 1px rgba(255, 255, 255, 0.15);
+			/* border-top: solid 1px rgba(255, 255, 255, 0.15); */
 			position: relative;
 		}
 
@@ -2259,7 +2259,7 @@ span.privacyConsentMessage {
 			}
 
 			.features section:nth-child(2n) {
-				border-left: solid 1px rgba(255, 255, 255, 0.15);
+				/* border-left: solid 1px rgba(255, 255, 255, 0.15); */
 			}
 
 			.features section .icon {
@@ -2670,15 +2670,15 @@ span.privacyConsentMessage {
 
 		input[type="checkbox"]:checked + label:before,
 		input[type="radio"]:checked + label:before {
-			background: #cccccc;
+			background: #f4f4f4;
 			border-color: #666666;
-			color: #b74e91;
+			color: #007dc3;
 			content: '\f00c';
 		}
 
 		input[type="checkbox"]:focus + label:before,
 		input[type="radio"]:focus + label:before {
-			border-color: #ffffff;
+			border-color: #cccccc;
 			box-shadow: 0 0 0 1px #ffffff;
 		}
 
