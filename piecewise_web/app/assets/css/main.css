@@ -58,6 +58,7 @@ canvas.progressGauge {
 	width: 100%;
   margin: 7px;
   padding: 0;
+  background-color: none;
 }
 .progress-bar .progress-active {
 	position: relative;
@@ -1861,13 +1862,13 @@ span.privacyConsentMessage {
 		-ms-transition: color 0.2s ease, border-bottom-color 0.2s ease;
 		transition: color 0.2s ease, border-bottom-color 0.2s ease;
 		border-bottom: dotted 1px rgba(255, 255, 255, 0.35);
-		color: inherit;
+		color: #337ab7;
 		text-decoration: none;
 	}
 
 		a:hover {
 			border-bottom-color: transparent;
-			color: #ffffff;
+			color: #235099;
 		}
 
 	strong, b {
@@ -2596,7 +2597,7 @@ span.privacyConsentMessage {
 		}
 
 	select option {
-		background-color: #312450;
+		/* background-color: #312450; */
 		color: #ffffff;
 	}
 
