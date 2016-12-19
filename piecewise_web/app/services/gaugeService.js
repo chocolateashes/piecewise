@@ -24,7 +24,7 @@ angular.module('Measure.GaugeService', [])
 
     barCTX.beginPath();
     barCTX.lineWidth = 20;
-    barCTX.strokeStyle = '#CCCCCC';
+    barCTX.strokeStyle = '#007dc3';
     barCTX.arc(137.5,137.5,111,startingAngle, endingAngle);
     barCTX.stroke();
   }
