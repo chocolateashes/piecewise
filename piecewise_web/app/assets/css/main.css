@@ -47,11 +47,13 @@ canvas.progressGauge {
 	margin: 0;
 	padding: 0;
 	height: 200px;
-	color: #000;
+	background-color: #000;
 }
 
 .inactiveGauge { opacity: 0.2; }
-.activeGauge { opacity: 0.9; }
+.activeGauge { 
+	opacity: 0.9; 
+}
 
 .progress-bar {
   position: relative;
@@ -67,10 +69,10 @@ canvas.progressGauge {
 	display: block;
 	padding-left: 0px;
 	padding-right: 0px;
-  margin-left: auto;
-  margin-right: auto;
+	margin-left: auto;
+	margin-right: auto;
 	width: 275px;
-  height: 275px;
+	height: 275px;
 }
 .progress-bar .progress-label {
   position: absolute;
@@ -2551,7 +2553,8 @@ span.privacyConsentMessage {
 		text-decoration: none;
 		width: 100%;
 	}
-		input.expected-values {
+		input[name="advertised_download"],
+		input[name="advertised_upload"] {
 			width:2em;
 		}
 
