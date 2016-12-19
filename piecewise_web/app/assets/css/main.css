@@ -59,6 +59,7 @@ canvas.progressGauge {
   margin: 7px;
   padding: 0;
   background-color: none;
+  color: #000;
 }
 .progress-bar .progress-active {
 	position: relative;
