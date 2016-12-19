@@ -47,7 +47,6 @@ canvas.progressGauge {
 	margin: 0;
 	padding: 0;
 	height: 200px;
-	background-color: #000;
 }
 
 .inactiveGauge { opacity: 0.2; }
@@ -56,13 +55,11 @@ canvas.progressGauge {
 }
 
 .progress-bar {
-  position: relative;
-  display: inline-block;
+	position: relative;
+	display: inline-block;
 	width: 100%;
-  margin: 7px;
-  padding: 0;
-  background-color: none;
-  color: #000;
+	margin: 7px;
+	padding: 0;
 }
 .progress-bar .progress-active {
 	position: relative;
