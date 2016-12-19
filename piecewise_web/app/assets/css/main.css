@@ -2598,7 +2598,7 @@ span.privacyConsentMessage {
 
 	select option {
 		/* background-color: #312450; */
-		color: #ffffff;
+		color: #000000;
 	}
 
 	input[type="text"],
