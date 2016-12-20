@@ -23,7 +23,7 @@ function success(position) {
 
         // currentLocText.text(currentLoc.address.road + currentLoc.address.neighbourhood + currentLoc.address.suburb + currentLoc.address.city + currentLoc.address.state);
         $('#mobile-container').append('<div id="mobile-approx-loc"></div>')
-        $('#approx-loc, #mobile-approx-loc').append("<p>Searching from:</p><p>" + currentLoc.address.road + ", " + currentLoc.address.city + ", " + currentLoc.address.state + "</p>");
+        $('#approx-loc, #mobile-approx-loc').append("<p>Testing from:</p><p>" + currentLoc.address.road + ", " + currentLoc.address.city + ", " + currentLoc.address.state + "</p>");
       } else {
         console.log('Location lookup failed');
       }
@@ -53,6 +53,7 @@ function submitExtraData() {
     });
   }
   showThankyou();
+  hideLocation()
 }
 
 function validateExtraDataForm() {
