@@ -6,7 +6,16 @@
   <form action="/collector/collect" method="get" id="collector">
   <div class="features">
     <section>
-      <h3>The City of Seattle is collecting information from residents about broadband experiences across the City. To contribute, please answer the following questions and then take our Broadband Speed Test:</h3>
+      <h3>The City of Seattle is collecting information from residents about broadband experiences across the City.</h3> 
+      <div id="icons">
+        <div id="explore-map" onclick="showMap()">
+          <img src="/images/compass.png" id="exploreMap" alt="Browse the Broadband Map" title="Browse the Broadband Map" /><span class="button-label">Browse the Broadband Map</span>
+        </div>
+        <div id="learn-more">
+          <a href="http://www.seattle.gov/broadband/broadband-speed-test/about-the-broadband-speed-test" target="_parent" ><img src="/images/about.svg" alt="Learn more about this test." title="Learn more about this test." /><span class="button-label">Learn More</span></a>
+        </div>
+      </div>      
+      <h3>To contribute, please answer the following questions and then take our Broadband Speed Test:</h3>
       <div id="extra-data" class="ndt-related">
         <div class="container">
           <p><span class="required">*</span> Who is your Internet Service Provider?</p>
@@ -87,14 +96,6 @@
             <h2>{{ currentSpeed }}</h2>
             <h4>{{ currentPhase }}</h4>
           </div>
-        </div>
-      </div>
-      <div id="icons">
-        <div id="explore-map" onclick="showMap()">
-          <img src="/images/compass.png" id="exploreMap" alt="Browse the Broadband Map" title="Browse the Broadband Map" /><span class="button-label">Browse the Broadband Map</span>
-        </div>
-        <div id="learn-more">
-          <a href="http://www.seattle.gov/broadband/broadband-speed-test/about-the-broadband-speed-test" target="_parent" ><img src="/images/about.svg" alt="Learn more about this test." title="Learn more about this test." /><span class="button-label">Learn More</span></a>
         </div>
       </div>
       <div ng-show="measurementComplete">
