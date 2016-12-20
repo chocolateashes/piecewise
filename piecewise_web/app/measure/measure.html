@@ -61,7 +61,7 @@
       </div>
       <p>
         <input type="checkbox" id="demoHuman" name="demoHuman" ng-model="privacyConsent">
-        <label for="demoHuman" translate style="font-size: smaller;">I understand that the data collected from this test will be anonymized and aggregated for publication to the Broadband Map and <a href="https://data.seattle.gov" target="_blank">Data.Seattle.Gov</a>. I also agree to the <a href="https://www.measurementlab.net/privacy/">M-Lab privacyv policy</a>, which includes retention and publication of IP addresses.</label>
+        <label for="demoHuman" translate style="font-size: smaller;">I understand that the data collected from this test will be anonymized and aggregated for publication to the Broadband Map and <a href="https://data.seattle.gov" target="_blank">Data.Seattle.Gov</a>. I also agree to the <a href="https://www.measurementlab.net/privacy/">M-Lab privacy policy</a>, which includes retention and publication of IP addresses.</label>
       </p>
       <p>
         <div class="row">
@@ -78,7 +78,6 @@
         	</div>
         </div>
       </p>
-      <small translate>For more on M-Lab's data collection and measurement, including the disclosure of IP addresses, see our <a href="https://www.measurementlab.net/privacy/">Privacy Policy</a>.</small>
     </section>
     <section id="measurementSpace">
       <div ng-show="!measurementComplete">
@@ -88,6 +87,14 @@
             <h2>{{ currentSpeed }}</h2>
             <h4>{{ currentPhase }}</h4>
           </div>
+        </div>
+      </div>
+      <div id="icons">
+        <div id="explore-map" onclick="showMap()">
+          <img src="images/compass.png" id="exploreMap" alt="Browse the Broadband Map" title="Browse the Broadband Map" /><span class="button-label">Browse the Broadband Map</span>
+        </div>
+        <div id="learn-more">
+          <a href="http://www.seattle.gov/broadband/broadband-speed-test/about-the-broadband-speed-test" target="_parent" ><img src="images/about.svg" alt="Learn more about this test." title="Learn more about this test." /><span class="button-label">Learn More</span></a>
         </div>
       </div>
       <div ng-show="measurementComplete">
