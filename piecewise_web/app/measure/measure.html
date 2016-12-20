@@ -61,7 +61,7 @@
       </div>
       <p>
         <input type="checkbox" id="demoHuman" name="demoHuman" ng-model="privacyConsent">
-        <label for="demoHuman" translate style="font-size: smaller;">I understand that the data collected from this test will be anonymized and aggregated for publication to the Broadband Map and <a href="https://data.seattle.gov" target="_blank">Data.Seattle.Gov</a>. I also agree to the <a href="https://www.measurementlab.net/privacy/">M-Lab data policy</a>, which includes retention and publication of IP addresses.</label>
+        <label for="demoHuman" translate style="font-size: smaller;">I understand that the data collected from this test will be anonymized and aggregated for publication to the Broadband Map and <a href="https://data.seattle.gov" target="_blank">Data.Seattle.Gov</a>. I also agree to the <a href="https://www.measurementlab.net/privacy/">M-Lab privacyv policy</a>, which includes retention and publication of IP addresses.</label>
       </p>
       <p>
         <div class="row">
@@ -72,6 +72,7 @@
               <span ng-show="startButtonClass == 'disabled'"><span translate>Testing</span> <i class="fa fa-circle-o-notch" aria-hidden="true"></i></span>
             </a>
         	</div>
+          <div id="approx-loc" class="visible"></div>
         	<div class="6u">
             <span translate ng-show="privacyConsent !== true" class="privacyConsentMessage">Please agree to the data policy prior to the test.</span>
         	</div>
@@ -120,7 +121,6 @@
   					</tr>
   				</table>
         </div>
-        <div id="approx-loc" class="visible"></div>
         <div id="ndt-results" class="ndt-related hidden">
           <div id="thankyou">
               <h2>Thank you!</h2>
