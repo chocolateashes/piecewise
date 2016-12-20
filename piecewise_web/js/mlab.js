@@ -143,19 +143,18 @@ function addControls() {
 
 	// Can't instantiate the slider until after "controls" is actually added to
 	// the map.
-	$('#sliderMonth')
-		.slider({
-			min: Number(dates[currentYear][0]),
-			max: Number(dates[currentYear][dates[currentYear].length - 1]),
-			value: currentMonth,
-			change: function (e, ui) {
-				updateLayers(e, 'update');
-			}
-		})
-		.slider('pips', {
-			rest: 'label',
-			labels: monthNames.slice(0, dates[currentYear].length)
-		});;
+	$('#sliderMonth').slider({
+		min: Number(dates[currentYear][0]),
+		max: Number(dates[currentYear][dates[currentYear].length - 1]),
+		value: currentMonth,
+		change: function (e, ui) {
+			updateLayers(e, 'update');
+		}
+	})
+	$('#sliderMonth').slider('pips', {
+		rest: 'label',
+		labels: monthNames.slice(0, dates[currentYear].length)
+	});;
 }
 
 /**
