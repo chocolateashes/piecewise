@@ -558,6 +558,10 @@ function showThankyou() {
 	$('#ndt-results').removeClass('hidden');
 	$('#ndt-results').addClass('visible');
 }
+function hideLocation() {
+	$('#approx-loc').removeClass('visible');
+	$('#approx-loc').addClass('hidden');
+}
 
 $( window ).resize(function() {
 	if ($('#header').hasClass('initial')) {
