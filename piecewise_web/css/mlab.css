@@ -1125,7 +1125,7 @@ a.leaflet-popup-close-button {
     cursor: pointer;
     line-height: 50px;
   }
-  #sidebar img {
+  #sidebar img, #icons img {
     max-width: 50px;
   }
   .expected-values, .expected-values p, .expected-values input, .expected-values small {
