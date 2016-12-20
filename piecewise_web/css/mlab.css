@@ -839,9 +839,6 @@ a.leaflet-popup-close-button {
   #mobile-menu, #mobile-container {
     display:none !important;
   }
-  #approx-loc {
-    float: right;
-  }
   #icon-container {
     width:13%;
   }
@@ -867,8 +864,9 @@ a.leaflet-popup-close-button {
     margin:5px 0 0 0;
   }
   #approx-loc {
-    width: 100%;
-    margin:5px 0 0 0;
+    width: 50%;
+    margin: 0 0 0 0;
+    float: right;
   }
 }
 
