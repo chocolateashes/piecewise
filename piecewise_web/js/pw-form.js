@@ -53,7 +53,7 @@ function submitExtraData() {
     });
   }
   showThankyou();
-  hideLocation()
+  hideLocation();
 }
 
 function validateExtraDataForm() {
