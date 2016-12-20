@@ -862,10 +862,14 @@ a.leaflet-popup-close-button {
   .sliderElements {
     width:70%;
   }
-  #ndt h4, #ndt > p, #approx-loc {
+  #ndt h4, #ndt > p {
   /*#ndt h4, #ndt p, #about-ndt p {
     font-size: 0.8em;*/
     width:65%;
+    margin:5px 0 0 0;
+  }
+  #approx-loc {
+    width: 100%;
     margin:5px 0 0 0;
   }
 }
