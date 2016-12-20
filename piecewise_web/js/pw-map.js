@@ -554,6 +554,11 @@ function showSocialShare() {
 	$('#socialshare').addClass('visible');
 }
 
+function showThankyou() {
+	$('#ndt-results').removeClass('hidden');
+	$('#ndt-results').addClass('visible');
+}
+
 $( window ).resize(function() {
 	if ($('#header').hasClass('initial')) {
 		return;

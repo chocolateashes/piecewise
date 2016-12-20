@@ -52,6 +52,7 @@ function submitExtraData() {
       }
     });
   }
+  showThankyou();
 }
 
 function validateExtraDataForm() {
